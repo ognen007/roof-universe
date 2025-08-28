@@ -16,7 +16,7 @@ const RoofingEasySection = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
             Whether your roof has been damaged by a recent storm or you're upgrading with new siding and gutters, 
-            CoMitted 365 is here to make the process as smooth and stress-free as possible. We are always available 
+            Roof Universe is here to make the process as smooth and stress-free as possible. We are always available 
             to answer your questions and keep you informed every step of the way.
           </p>
         </div>
