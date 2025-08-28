@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { CheckCircle, Shield, Award, Users } from 'lucide-react';
 
 const ContactHeroSection = () => {
@@ -10,6 +11,9 @@ const ContactHeroSection = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -20,8 +24,42 @@ const ContactHeroSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // EmailJS template parameters matching your variable names
+    const templateParams = {
+      user_firstName: formData.firstName,
+      user_lastName: formData.lastName,
+      user_email: formData.email,
+      user_phoneNumber: formData.phone,
+      user_message: formData.message
+    };
+
+    // Replace these with your actual EmailJS credentials
+    const SERVICE_ID = 'your_service_id';
+    const TEMPLATE_ID = 'your_template_id';
+    const PUBLIC_KEY = 'your_public_key';
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then((response) => {
+        console.log('Email sent successfully:', response);
+        setSubmitStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Email send failed:', error);
+        setSubmitStatus('error');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const features = [
@@ -153,10 +191,23 @@ const ContactHeroSection = () => {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-yellow-400 text-black px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
-                Get Free Quote
+                {isSubmitting ? 'Sending...' : 'Get Free Quote'}
               </button>
+
+              {submitStatus === 'success' && (
+                <div className="text-green-600 text-center font-medium">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="text-red-600 text-center font-medium">
+                  Sorry, there was an error sending your message. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>
