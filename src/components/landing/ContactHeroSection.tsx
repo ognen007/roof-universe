@@ -85,7 +85,7 @@ const ContactHeroSection = () => {
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               Top-Rated Roofing & Exterior Services in 
-              <span className="block text-yellow-400">Minnesota</span>
+              <span className="block text-yellow-400">maryland</span>
             </h2>
             
             <p className="text-2xl text-yellow-400 font-semibold mb-8">
