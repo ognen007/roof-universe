@@ -27,16 +27,15 @@ const ContactHeroSection = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    // EmailJS template parameters matching your variable names
+    // ✅ match template variables exactly as in EmailJS dashboard
     const templateParams = {
-      user_firstName: formData.firstName,
-      user_lastName: formData.lastName,
-      user_email: formData.email,
-      user_phoneNumber: formData.phone,
-      user_message: formData.message
+      "user.firstName": formData.firstName,
+      "user.lastName": formData.lastName,
+      "user.email": formData.email,
+      "user.phoneNumber": formData.phone,
+      "user.message": formData.message
     };
 
-    // Replace these with your actual EmailJS credentials
     const SERVICE_ID = 'service_uzwa0wd';
     const TEMPLATE_ID = 'template_0a2zsdu';
     const PUBLIC_KEY = '7GWJCDUgFF8umTHQk';
