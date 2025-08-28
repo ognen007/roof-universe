@@ -37,9 +37,9 @@ const ContactHeroSection = () => {
     };
 
     // Replace these with your actual EmailJS credentials
-    const SERVICE_ID = 'your_service_id';
-    const TEMPLATE_ID = 'your_template_id';
-    const PUBLIC_KEY = 'your_public_key';
+    const SERVICE_ID = 'service_uzwa0wd';
+    const TEMPLATE_ID = 'template_0a2zsdu';
+    const PUBLIC_KEY = '7GWJCDUgFF8umTHQk';
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       .then((response) => {
