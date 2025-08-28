@@ -8,7 +8,7 @@ const RoofingEasySection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-32 pb-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -27,7 +27,7 @@ const RoofingEasySection = () => {
               <img
                 src={image}
                 alt={`Roofing project ${index + 1}`}
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
             </div>
